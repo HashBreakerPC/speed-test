@@ -42,7 +42,7 @@ if [ "$(id -u)" != "0" ]; then
 			clear
 			done
 			else
-			echo "chiudo lo script"
+			echo "close script"
 			sleep 3
 			exit 1
 		fi
