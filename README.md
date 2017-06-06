@@ -1,1 +1,1 @@
-# speed-test
+# wifi-reg
