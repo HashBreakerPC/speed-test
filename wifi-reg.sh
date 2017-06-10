@@ -25,6 +25,34 @@
 
 lname=`basename $0 | cut -d '.' -f 1`
 echo ${lname^^}
+check_dp(){
+	name_d=`uname -n`
+	if [[ "$name_d" = "debian" ]] || [[ "name_d" = "ubuntu" ]]
+	then
+		dep=`dpkg -s wireless-tools | grep -o 'Status:[^:]*' | cut -d " " -f3`
+		if [[ "$dep" != "ok" ]]
+		then
+				echo "wireless-tools is not installed"
+				sleep 2
+				echo "install it whith: sudo apt install wireless-tools"
+				sleep 2
+				echo "and launch this script again....exit!"
+				sleep 3
+				exit 1
+		fi
+		else
+				echo "wireless-tools is not installed"
+				sleep 2
+				echo "install it whith your package manager (apt, yum etc.. wireless-tools)"
+				sleep 2
+				echo "and launch this script again....exit!"
+				sleep 3
+				exit 1
+	fi
+}
+
+
+check_dp
 if [ "$(id -u)" != "0" ]; then
 	sudo -k
 	wl=`sudo -S iwgetid | cut -d ' ' -f 1`
