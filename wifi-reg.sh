@@ -29,7 +29,7 @@ check_dp(){
 	name_d=`uname -n`
 	if [[ "$name_d" = "debian" ]] || [[ "name_d" = "ubuntu" ]]
 	then
-		dep=`dpkg -s wireless-tools | grep -o 'Status:[^:]*' | cut -d " " -f3`
+		dep=`dpkg -s wireless-tools |awk '/status|install/{print $3}'`
 		if [[ "$dep" != "ok" ]]
 		then
 				echo "wireless-tools is not installed"
