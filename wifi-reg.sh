@@ -27,7 +27,7 @@ lname=`basename $0 | cut -d '.' -f 1`
 echo ${lname^^}
 check_dp(){
 	name_d=`uname -n`
-	if [[ "$name_d" = "debian" ]] || [[ "name_d" = "ubuntu" ]]
+	if [[ "$name_d" = "debian" ]] || [[ "$name_d" = "ubuntu" ]] || [[ "$name_d" = "kali" ]]
 	then
 		dep=`dpkg -s wireless-tools |awk '/status|install/{print $3}'`
 		if [[ "$dep" != "ok" ]]
