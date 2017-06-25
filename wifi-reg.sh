@@ -62,7 +62,7 @@ if [ "$(id -u)" != "0" ]; then
 				clear
 				echo ${lname^^}
 				echo
-				sudo -S iwconfig $wl | grep -o -e 'wlan1' -o -e 'Link Quality=[^*]*' | cut -d '=' -f1,2,3,4
+				sudo -S iwconfig $wl | grep -o -e '$wl' -o -e 'Link Quality=[^*]*' | cut -d '=' -f1,2,3,4
 				echo
 				echo "CTRL+C to stop this script"
 				sleep 1
@@ -83,7 +83,7 @@ if [ "$(id -u)" != "0" ]; then
 		clear
 		echo ${lname^^}
 		echo
-		iwconfig $wl | grep -o -e 'wlan1' -o -e 'Link Quality=[^*]*' | cut -d '=' -f1,2,3,4
+		sudo -S iwconfig $wl | grep -o -e '$wl' -o -e 'Link Quality=[^*]*' | cut -d '=' -f1,2,3,4
 		echo
 		echo "CTRL+C to stop this script"
 		sleep 1
