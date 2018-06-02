@@ -26,8 +26,8 @@
 lname=`basename $0 | cut -d '.' -f 1`
 echo ${lname^^}
 check_dp(){
-	name_d=`uname -n`
-	if [[ "$name_d" = "debian" ]] || [[ "$name_d" = "ubuntu" ]] || [[ "$name_d" = "kali" ]]
+	name_d=`lsb_release -i | cut -d ':' -f2 | tr -d '\t'``
+	if [[ "$name_d" = "Debian" ]] || [[ "$name_d" = "Ubutu" ]] || [[ "$name_d" = "Kali" ]]
 	then
 		dep=`dpkg -s wireless-tools |awk '/status|install/{print $3}'`
 		if [[ "$dep" != "ok" ]]
@@ -62,7 +62,7 @@ if [ "$(id -u)" != "0" ]; then
 				clear
 				echo ${lname^^}
 				echo
-				sudo -S iwconfig $wl | grep -o -e '$wl' -o -e 'Link Quality=[^*]*' | cut -d '=' -f1,2,3,4
+				sudo -S iwconfig $wl | grep -o -e $wl -o -e 'Link Quality=[^*]*' | cut -d '=' -f1,2,3,4
 				echo
 				echo "CTRL+C to stop this script"
 				sleep 1
@@ -83,7 +83,7 @@ if [ "$(id -u)" != "0" ]; then
 		clear
 		echo ${lname^^}
 		echo
-		sudo -S iwconfig $wl | grep -o -e '$wl' -o -e 'Link Quality=[^*]*' | cut -d '=' -f1,2,3,4
+		sudo -S iwconfig $wl | grep -o -e $wl -o -e 'Link Quality=[^*]*' | cut -d '=' -f1,2,3,4
 		echo
 		echo "CTRL+C to stop this script"
 		sleep 1
