@@ -26,7 +26,7 @@
 lname=`basename $0 | cut -d '.' -f 1`
 echo ${lname^^}
 check_dp(){
-	name_d=`lsb_release -i | cut -d ':' -f2 | tr -d '\t'``
+	name_d=`lsb_release -i | cut -d ':' -f2 | tr -d '\t'`
 	if [[ "$name_d" = "Debian" ]] || [[ "$name_d" = "Ubutu" ]] || [[ "$name_d" = "Kali" ]]
 	then
 		dep=`dpkg -s wireless-tools |awk '/status|install/{print $3}'`
